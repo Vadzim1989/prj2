@@ -31,7 +31,7 @@ const clickHandler2 = (event) => {
         console.log(event.target.textContent);
     }
 }
- list.addEventListener('click', clickHandler2);
+//  list.addEventListener('click', clickHandler2);
 
 
 
@@ -72,4 +72,80 @@ check.addEventListener('click', clickFunc);
 sel.addEventListener('click', clickFunc);
 
 
+// working with classes ----------------------------------------------------
 
+// list.addEventListener('click', function(event) {
+//     event.target.classList.remove('test');
+//     event.target.classList.toggle('selected');
+//     console.log(event.target.classList.contains('test'));
+// })
+
+// working with CSS
+
+// list.addEventListener('click', function(event) {
+//     event.target.style.color = 'red';
+//     event.target.style.fontSize = '20px';
+//     event.target.style.border = '2px solid orange';
+// })
+
+// list.addEventListener('mousemove', function(event) {
+//     event.target.style.fontSize = `${event.clientY}px`;
+// })
+
+
+const chbox = document.getElementById('chbox');
+const testbtn = document.getElementById('testbtn');
+
+// testbtn.addEventListener('click', function (event) {
+//     console.log(chbox.setAttribute('type', 'radio'));
+// })
+
+chbox.addEventListener('click', function (event) {
+    testbtn.disabled = !testbtn.disabled;
+})
+
+chbox.addEventListener('click', function (event) {
+    if(chbox.checked){
+        console.log('its checked');
+    } else {
+        console.log('its not checked')
+    }
+})
+
+
+//---------------------------------------------------------------------
+
+const goods = [
+    {
+        name: 'noski',
+        price: 2
+    },
+    {
+        name: 'trusi',
+        price: 10
+    },
+    {
+        name: 'shampoo',
+        price: 100
+    },
+    {
+        name: 'stanok',
+        price: 99
+    }
+];
+
+function createElem (goodsName, price) {
+    const elem = document.createElement('li');
+    elem.textContent = goodsName;
+    elem.setAttribute('data-price', price);
+    return elem
+}
+
+goods.forEach((tovar) => {
+    list.append(createElem(tovar.name, tovar.price));
+});
+
+list.addEventListener('click', function (event) {
+    console.log(event.target.dataset.price );
+})
+// data attribute
